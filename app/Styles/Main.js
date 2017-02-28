@@ -90,6 +90,12 @@ let styles = StyleSheet.create({
     flex: 1
   },
 
+  loading: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
   pt: {
     paddingTop: 10
   },
