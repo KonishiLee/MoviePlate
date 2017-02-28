@@ -4,6 +4,7 @@
 'use strict';
 
 import React, { Component } from 'react';
+import Carousel from 'react-native-carousel';
 import {
   Text,
   View,
@@ -59,9 +60,18 @@ class MovieDetail extends Component {
     }
 
     let movie = this.state.movieDetail;
-
+    let StillView = movie.photos.map(img => {
+      return (
+        <Image
+          source={{uri: img}}
+        />
+      );
+    });
     return (
-      <View style={[styles.container, {paddingTop: 100}]}>
+      <View style={[styles.p10]}>
+        <View>
+          {StillView}
+        </View>
         <WebView styleWebViewstyle={styles.item}
           source={{html: movie.dra}}
           domStorageEnabled={true}
@@ -69,6 +79,7 @@ class MovieDetail extends Component {
           scrollEnabled={false}
           >
         </WebView>
+
       </View>
     );
   }

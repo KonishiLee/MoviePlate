@@ -84,9 +84,10 @@ let styles = StyleSheet.create({
     color: 'rgba(0, 0, 0, 0.8)',
     lineHeight: 26,
   },
+
   container: {
     backgroundColor: '#eae7ff',
-    flex: 1,
+    flex: 1
   },
 
   pt: {
@@ -103,6 +104,10 @@ let styles = StyleSheet.create({
 
   pb: {
     paddingBottom: 10
+  },
+
+  p10: {
+    padding: 10
   }
 });
 
