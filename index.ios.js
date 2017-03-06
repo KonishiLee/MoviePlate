@@ -7,8 +7,9 @@
 import React, { Component } from 'react';
 import icons from './app/Assets/Icons'
 import Featured from './app/Components/Featured';
-import Cinema from './app/Components/Cinema';
-import User from './app/Components/User';
+import Cinemas from './app/Components/Cinemas';
+import Mine from './app/Components/Mine';
+import Global from './app/Styles/Global';
 
 import {
   AppRegistry,
@@ -31,7 +32,7 @@ export default class MaoyanMovie extends Component {
 
   render() {
     return (
-      <TabBarIOS barTintColor="darkslateblue" tintColor="white">
+      <TabBarIOS barTintColor={Global.barBgColor} tintColor="white">
         <TabBarIOS.Item
           icon={{uri: icons.star, scale: 4.6}}
           title="最新电影"
@@ -46,7 +47,7 @@ export default class MaoyanMovie extends Component {
         </TabBarIOS.Item>
         <TabBarIOS.Item
           icon={{uri: icons.board, scale: 4.6}}
-          title="影院"
+          title="周边院线"
           selectedIcon={{uri: icons.boardActive, scale: 4.6}}
           selected={this.state.selectedTab === 'cinema'}
           onPress={() => {
@@ -55,7 +56,7 @@ export default class MaoyanMovie extends Component {
             });
           }}
           >
-          <Cinema />
+          <Cinemas />
         </TabBarIOS.Item>
         <TabBarIOS.Item
           icon={{uri: icons.user, scale: 3.3}}
@@ -67,7 +68,7 @@ export default class MaoyanMovie extends Component {
             })
           }}
           >
-          <User />
+          <Mine />
         </TabBarIOS.Item>
       </TabBarIOS>
     );

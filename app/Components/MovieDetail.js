@@ -13,6 +13,7 @@ import {
   Image,
   WebView,
   ListView,
+  ScrollView,
   ActivityIndicator,
   TouchableHighlight,
   TouchableOpacity,
@@ -34,7 +35,7 @@ class MovieDetail extends Component {
       resizeMode: 'contain',
       duration: 0.0,
       currentTime: 0.0,
-      paused: false,
+      paused: true,
       skin: 'custom',
       isBuffering: false,
 
@@ -61,6 +62,37 @@ class MovieDetail extends Component {
       .done();
   }
 
+  _setupStarView() {
+    let movie = this.state.movieDetail;
+
+    if (movie.star.length > 100) {
+      return (
+        <View style={styles.p10}>
+          <Text style={styles.labelText}>主演：</Text>
+          <Text style={styles.metaText}>
+            {movie.star.substr(0, 99)}...
+          </Text>
+          <TouchableOpacity
+            onPress={() => {
+              console.log('get star detail');
+            }}
+          >
+            <Text>详情</Text>
+          </TouchableOpacity>
+        </View>
+      );
+    }
+
+    return (
+      <View style={styles.p10}>
+        <Text style={styles.labelText}>主演：</Text>
+        <Text style={styles.metaText}>
+          {movie.star}
+        </Text>
+      </View>
+    );
+  }
+
   render() {
     if (!this.state.loaded) {
       return (
@@ -78,25 +110,40 @@ class MovieDetail extends Component {
     let movie = this.state.movieDetail;
 
     return (
-      <View style={[styles.container, {paddingTop: 60}]}>
-        <Video
-          source={{uri: movie.vd}}
-          style={[{height: 200}]}
-          rate={this.state.rate}
-          paused={this.state.paused}
-          muted={this.state.muted}
-          resizeMode={this.state.resizeMode}
-          repeat={false}
+      <ScrollView styel={styles.container}>
+        <View style={[styles.bodyContainer]}>
+          <View>
+            <Video
+              source={{uri: movie.vd}}
+              style={[{height: 200}]}
+              rate={this.state.rate}
+              paused={this.state.paused}
+              muted={this.state.muted}
+              resizeMode={this.state.resizeMode}
+              repeat={false}
+            />
+          </View>
 
-        />
-        <WebView styleWebViewstyle={styles.item}
-          source={{html: movie.dra}}
-          domStorageEnabled={true}
-          javaScriptEnabled={true}
-          scrollEnabled={true}
-          >
-        </WebView>
-      </View>
+          <View style={[styles.p10]}>
+            <Text style={styles.headerText}>
+              {movie.nm}
+            </Text>
+
+            <Text style={[styles.metaText]}>
+              {movie.ver}
+            </Text>
+          </View>
+
+          {this._setupStarView()}
+
+          <View style={styles.p10}>
+            <Text style={styles.labelText}>详情：</Text>
+            <Text style={styles.metaText}>
+              {movie.dra.replace(new RegExp(/<p>/g),'').replace(new RegExp(/<\/p>/g),'')}
+            </Text>
+          </View>
+        </View>
+      </ScrollView>
     );
   }
 }

@@ -2,20 +2,9 @@
 
 import React, { Component } from 'react';
 import { StyleSheet } from 'react-native';
+import Global from './Global';
 
 let styles = StyleSheet.create({
-  deleteIcon: {
-    width: 20,
-    height: 20,
-    margin: 10,
-    opacity: 0.6,
-  },
-  searchHeader: {
-    color: 'rgba(0, 0, 0, 0.8)',
-    fontSize: 18,
-    marginTop: 30,
-    marginLeft: 10,
-  },
   item: {
     flexDirection: 'row',
     borderBottomWidth: 1,
@@ -32,13 +21,8 @@ let styles = StyleSheet.create({
     fontSize: 18,
     fontFamily: 'Helvetica Neue',
     fontWeight: '300',
-    color: '#6435c9',
+    color: Global.colorStyle,
     marginBottom: 6,
-  },
-  itemMeta: {
-    fontSize: 16,
-    color: 'rgba(0, 0, 0, 0.6)',
-    marginBottom:6,
   },
   redText: {
     color: '#999',
@@ -85,6 +69,11 @@ let styles = StyleSheet.create({
     lineHeight: 26,
   },
 
+  bodyContainer: {
+    paddingTop: 60,
+    paddingBottom: 60,
+  },
+
   container: {
     backgroundColor: '#eae7ff',
     flex: 1
@@ -94,6 +83,23 @@ let styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+
+  headerText: {
+    fontSize: 20,
+    color: Global.colorStyle,
+  },
+
+  labelText: {
+    fontSize: 16,
+    color: Global.colorStyle,
+  },
+
+  metaText: {
+    fontSize: 14,
+    paddingTop: 5,
+    paddingBottom: 5,
+    color: 'rgba(0, 0, 0, 0.6)',
   },
 
   pt: {
@@ -114,6 +120,15 @@ let styles = StyleSheet.create({
 
   p10: {
     padding: 10
+  },
+
+  mt: {
+    marginTop: 10
+  },
+
+  bb: {
+    borderBottomWidth: 1,
+    borderColor: Global.colorStyle,
   }
 });
 

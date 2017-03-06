@@ -7,18 +7,20 @@ import {
   ListView,
 } from 'react-native';
 
-class Cinema extends React.Component{
+import styles from '../Styles/Main';
+
+class User extends React.Component{
   constructor(props){
     super(props)
   }
 
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <Text>我的</Text>
       </View>
     );
   }
 }
 
-export { Cinema as default};
+export { User as default};

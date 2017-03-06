@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from '../Styles/Main';
 import MovieDetail from './MovieDetail';
+import Global from '../Styles/Global';
 
 import {
   Text,
@@ -8,14 +9,16 @@ import {
   Image,
   ListView,
   TouchableHighlight,
+  ActivityIndicator,
 } from 'react-native';
 
-class Cinema extends React.Component{
+class MovieList extends React.Component{
   constructor(props){
     super(props);
 
     this.state = {
-      movies: []
+      movies: [],
+      loaded: false
     };
 
     this.dataSource = new ListView.DataSource({
@@ -33,7 +36,8 @@ class Cinema extends React.Component{
       .then(response => response.json())
       .then(responseData => {
         this.setState({
-          movies: responseData.data.movies
+          movies: responseData.data.movies,
+          loaded: true
         });
       })
       .done();
@@ -50,7 +54,7 @@ class Cinema extends React.Component{
   renderMovieList(movie) {
     return (
       <TouchableHighlight
-        underlayColor="rgba(34, 26, 38, 0.1)"
+        underlayColor={Global.underlayColor}
         onPress={() => this.showMovieDetail(movie)}
       >
         <View style={styles.item}>
@@ -77,15 +81,31 @@ class Cinema extends React.Component{
   }
 
   render() {
+    if (!this.state.loaded) {
+      return (
+        <View style={styles.container}>
+          <View style={styles.loading}>
+            <ActivityIndicator
+              size="large"
+              color={Global.colorStyle}
+            />
+          </View>
+        </View>
+      );
+    }
     return (
-      <ListView
-          initialListSize={this.state.movies.length}
-          dataSource={this.dataSource.cloneWithRows(this.state.movies)}
-          renderRow={this.renderMovieList.bind(this)}
-          enableEmptySections={true}
-        />
+      <View style={styles.container}>
+        <View style={styles.bodyContainer}>
+          <ListView
+            initialListSize={this.state.movies.length}
+            dataSource={this.dataSource.cloneWithRows(this.state.movies)}
+            renderRow={this.renderMovieList.bind(this)}
+            enableEmptySections={true}
+          />
+        </View>
+      </View>
     );
   }
 }
 
-export { Cinema as default};
+export { MovieList as default};

@@ -12,16 +12,16 @@ import {
 
 import styles from '../Styles/Main';
 import Global from '../Styles/Global';
-import MovieList from './MovieList';
+import Cinema from './Cinema';
 
-class Featured extends Component {
+class Cinemas extends Component {
   render() {
     return (
       <NavigatorIOS
         style={styles.container}
         initialRoute={{
-          title: '最新电影',
-          component: MovieList
+          title: '周边院线',
+          component: Cinema
         }}
         shadowHidden={true}
         barTintColor={Global.barBgColor}
@@ -33,4 +33,4 @@ class Featured extends Component {
   }
 }
 
-export { Featured as default };
+export { Cinemas as default };

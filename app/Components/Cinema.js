@@ -7,6 +7,8 @@ import {
   ListView,
 } from 'react-native';
 
+import styles from '../Styles/Main';
+
 class Cinema extends React.Component{
   constructor(props){
     super(props);
@@ -27,7 +29,7 @@ class Cinema extends React.Component{
 
   render() {
     return (
-      <View>
+      <View style={styles.continer}>
         <Text>影院</Text>
       </View>
     );
