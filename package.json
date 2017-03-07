@@ -1,7 +1,8 @@
 {
   "name": "MaoyanMovie",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "private": true,
+  "author": "KonishiLee",
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest"
