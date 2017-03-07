@@ -1,6 +1,6 @@
 /**
- * MaoyanMovie
- * git@git.coding.net:konishilee/MaoyanMovie.git
+ * MoviePlate
+ * git@git.coding.net:konishilee/MoviePlate.git
  * KonishiLee
  */
 
