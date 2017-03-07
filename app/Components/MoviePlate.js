@@ -10,9 +10,9 @@ import {
   NavigatorIOS
 } from 'react-native';
 
+import User from './About';
 import styles from '../Styles/Main';
 import Global from '../Styles/Global';
-import User from './User';
 
 class Mine extends Component {
   render() {
@@ -20,7 +20,7 @@ class Mine extends Component {
       <NavigatorIOS
         style={styles.container}
         initialRoute={{
-          title: '我的',
+          title: 'Movie Plate',
           component: User
         }}
         shadowHidden={true}

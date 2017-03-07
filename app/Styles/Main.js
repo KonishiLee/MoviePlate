@@ -1,4 +1,8 @@
+/**
+ * Created By KonishiLee
+ */
 'use strict';
+
 
 import React, { Component } from 'react';
 import { StyleSheet } from 'react-native';
@@ -22,7 +26,6 @@ let styles = StyleSheet.create({
     fontFamily: 'Helvetica Neue',
     fontWeight: '300',
     color: Global.colorStyle,
-    marginBottom: 6,
   },
   redText: {
     color: '#999',
@@ -32,25 +35,6 @@ let styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  overlay: {
-    backgroundColor: 'rgba(0, 0, 0, 0.3)',
-    alignItems: 'center',
-  },
-  overlayHeader: {
-    fontSize: 33,
-    fontFamily: 'Helvetica Neue',
-    fontWeight: '200',
-    color: '#eae7ff',
-    padding: 10,
-  },
-  overlaySubHeader: {
-    fontSize: 16,
-    fontFamily: 'Helvetica Neue',
-    fontWeight: '200',
-    color: '#eae7ff',
-    padding: 10,
-    paddingTop: 0,
   },
   backgroundImage: {
     flex: 1,
@@ -75,7 +59,7 @@ let styles = StyleSheet.create({
   },
 
   container: {
-    backgroundColor: '#eae7ff',
+    backgroundColor: 'white',
     flex: 1
   },
 
@@ -102,6 +86,13 @@ let styles = StyleSheet.create({
     color: 'rgba(0, 0, 0, 0.6)',
   },
 
+  avatar: {
+    width: 30,
+    height: 30,
+    borderRadius: 5,
+
+  },
+
   pt: {
     paddingTop: 10
   },
@@ -122,8 +113,16 @@ let styles = StyleSheet.create({
     padding: 10
   },
 
+  pt5: {
+    paddingTop: 5
+  },
+
   mt: {
     marginTop: 10
+  },
+
+  textCenter: {
+    alignItems: 'center'
   },
 
   bb: {

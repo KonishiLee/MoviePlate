@@ -6,9 +6,9 @@
 
 import React, { Component } from 'react';
 import icons from './app/Assets/Icons'
-import Featured from './app/Components/Featured';
+import Featured from './app/Components/Latest';
 import Cinemas from './app/Components/Cinemas';
-import Mine from './app/Components/Mine';
+import Mine from './app/Components/MoviePlate';
 import Global from './app/Styles/Global';
 
 import {
@@ -18,7 +18,7 @@ import {
   View,
   Image,
   ListView,
-  TabBarIOS
+  TabBarIOS,
 } from 'react-native';
 
 export default class MaoyanMovie extends Component {
@@ -26,7 +26,7 @@ export default class MaoyanMovie extends Component {
       super(props);
 
       this.state = {
-        selectedTab: 'movie'
+        selectedTab: 'about'
       }
   }
 
@@ -34,37 +34,37 @@ export default class MaoyanMovie extends Component {
     return (
       <TabBarIOS barTintColor={Global.barBgColor} tintColor="white">
         <TabBarIOS.Item
-          icon={{uri: icons.star, scale: 4.6}}
+          icon={{uri: icons.latest, scale: 4.5}}
           title="最新电影"
-          selectedIcon={{uri: icons.starActive, scale: 4.6}}
-          selected={this.state.selectedTab === 'movie'}
+          selectedIcon={{uri: icons.latestActive, scale: 4.5}}
+          selected={this.state.selectedTab === 'latest'}
           onPress={() => {
             this.setState({
-              selectedTab: 'movie'
+              selectedTab: 'latest'
             });
           }}>
           <Featured />
         </TabBarIOS.Item>
         <TabBarIOS.Item
-          icon={{uri: icons.board, scale: 4.6}}
+          icon={{uri: icons.cinemas, scale: 4.5}}
           title="周边院线"
-          selectedIcon={{uri: icons.boardActive, scale: 4.6}}
-          selected={this.state.selectedTab === 'cinema'}
+          selectedIcon={{uri: icons.cinemasActive, scale: 4.5}}
+          selected={this.state.selectedTab === 'cinemas'}
           onPress={() => {
             this.setState({
-              selectedTab: 'cinema'
+              selectedTab: 'cinemas'
             });
           }}
           >
           <Cinemas />
         </TabBarIOS.Item>
         <TabBarIOS.Item
-          icon={{uri: icons.user, scale: 3.3}}
-          selected={this.state.selectedTab === 'mine'}
-          title="我的"
+          icon={{uri: icons.about, scale: 3.3}}
+          selected={this.state.selectedTab === 'about'}
+          title="关于"
           onPress={() => {
             this.setState({
-              selectedTab: 'mine'
+              selectedTab: 'about'
             })
           }}
           >

@@ -18,7 +18,13 @@ import {
   TouchableHighlight,
   TouchableOpacity,
 } from 'react-native';
+
 import styles from '../Styles/Main';
+import Global from '../Styles/Global';
+
+// TODO:
+// 1.播放器的使用
+// 2.评论的优化
 
 class MovieDetail extends Component {
   constructor(props) {
@@ -28,17 +34,15 @@ class MovieDetail extends Component {
       movieDetail: {},
       movieComments: {},
       loaded: false,
-
       rate: 1,
       volume: 1,
       muted: false,
       resizeMode: 'contain',
       duration: 0.0,
       currentTime: 0.0,
-      paused: true,
+      paused: false,
       skin: 'custom',
       isBuffering: false,
-
     };
 
     const REQUEST_URL = `http://m.maoyan.com/movie/${this.props.movie.id}.json`;
@@ -50,9 +54,6 @@ class MovieDetail extends Component {
     fetch(REQUEST_URL)
       .then(response => response.json())
       .then(responseData => {
-        console.log(responseData.data.MovieDetailModel);
-        console.log(responseData.data.CommentResponseModel);
-
         this.setState({
           movieDetail: responseData.data.MovieDetailModel,
           movieComments: responseData.data.CommentResponseModel,
@@ -77,7 +78,7 @@ class MovieDetail extends Component {
               console.log('get star detail');
             }}
           >
-            <Text>详情</Text>
+            <Text>展开</Text>
           </TouchableOpacity>
         </View>
       );
@@ -100,7 +101,7 @@ class MovieDetail extends Component {
           <View style={styles.loading}>
             <ActivityIndicator
               size="large"
-              color="#6435c9"
+              color={Global.colorStyle}
             />
           </View>
         </View>
@@ -108,6 +109,22 @@ class MovieDetail extends Component {
     }
 
     let movie = this.state.movieDetail;
+    let comments = this.state.movieComments.cmts.map((c) => {
+      return (
+        <View key={c.id} style={[styles.item, styles.p10]}>
+          <View>
+            <Text style={styles.metaText}>{c.content}</Text>
+
+            <Image
+              style={[styles.avatar, styles.mt]}
+              source={{uri: c.avatarurl}}
+              />
+            <Text style={[styles.pt5]}>{c.nick}</Text>
+            <Text style={styles.metaText}>{c.time}</Text>
+          </View>
+        </View>
+      );
+    });
 
     return (
       <ScrollView styel={styles.container}>
@@ -142,6 +159,12 @@ class MovieDetail extends Component {
               {movie.dra.replace(new RegExp(/<p>/g),'').replace(new RegExp(/<\/p>/g),'')}
             </Text>
           </View>
+
+          <View style={styles.p10}>
+            <Text style={styles.labelText}>热门评论：</Text>
+          </View>
+
+          {comments}
         </View>
       </ScrollView>
     );

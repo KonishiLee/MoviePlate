@@ -10,9 +10,9 @@ import {
   NavigatorIOS
 } from 'react-native';
 
+import Area from './Area';
 import styles from '../Styles/Main';
 import Global from '../Styles/Global';
-import Cinema from './Cinema';
 
 class Cinemas extends Component {
   render() {
@@ -21,7 +21,7 @@ class Cinemas extends Component {
         style={styles.container}
         initialRoute={{
           title: '周边院线',
-          component: Cinema
+          component: Area
         }}
         shadowHidden={true}
         barTintColor={Global.barBgColor}

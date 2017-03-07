@@ -10,11 +10,11 @@ import {
   NavigatorIOS
 } from 'react-native';
 
+import MovieList from './MovieList';
 import styles from '../Styles/Main';
 import Global from '../Styles/Global';
-import MovieList from './MovieList';
 
-class Featured extends Component {
+class Latest extends Component {
   render() {
     return (
       <NavigatorIOS
@@ -33,4 +33,4 @@ class Featured extends Component {
   }
 }
 
-export { Featured as default };
+export { Latest as default };

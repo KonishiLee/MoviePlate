@@ -1,6 +1,12 @@
+/**
+ * Created By KonishiLee
+ */
+'use strict';
+
+
 let Global = {
-  barBgColor: 'darkslateblue',
-  colorStyle: '#6435c9',
+  barBgColor: '#006699',
+  colorStyle: '#317DDA',
   underlayColor: 'rgba(34, 26, 38, 0.1)',
 };
 
