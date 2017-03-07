@@ -26,7 +26,7 @@ export default class MaoyanMovie extends Component {
       super(props);
 
       this.state = {
-        selectedTab: 'about'
+        selectedTab: 'latest'
       }
   }
 

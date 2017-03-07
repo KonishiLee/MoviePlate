@@ -16,6 +16,7 @@ import {
 } from 'react-native';
 
 import styles from '../Styles/Main';
+import Global from '../Styles/Global';
 
 class User extends React.Component{
   constructor(props){
